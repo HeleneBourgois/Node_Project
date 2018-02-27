@@ -18,6 +18,8 @@ db.once('open', function(){
     console.log('we are connected')
 })
 
+
+
 app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use('/', userRouter)
