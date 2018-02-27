@@ -12,13 +12,13 @@ recipeRouter.use(function(req, res, next) {
  })
 
 
-recipeRouter.get('/recipe', (req, res) => {
+
+recipeRouter.get('/recipes', (req, res) => {
     controller.find(req.query, (err, recipes) => {
         // console.log(req.params.id)
         if (err) {
             res.status(500).send(err)
-        }
-       else {
+        } else {
            res.status(200).send(recipes)
        }
     })
@@ -31,7 +31,6 @@ recipeRouter.post('/recipe/:userId', (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
-            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
