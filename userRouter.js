@@ -9,11 +9,7 @@ app.use(bodyParser.json())
  userRouter.use(function(req, res, next) {
      next()
  })
-// app.use('/', routes)
 
-// usersRouter.get('/', (req, res, next) => {
-//     res.send(users)
-// })
 
 userRouter.get('/user/:id', (req, res) => {
     controller.find(req.params.id, (err, user) => {
@@ -35,7 +31,6 @@ userRouter.post('/user', (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
-            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
@@ -63,11 +58,13 @@ userRouter.delete('/user/:id', (req, res) => {
 })
 
 userRouter.get('/login', (req, res) => {
-    controller.login(req.query, (err, message) => {
+    controller.login(req.query, (err, data) => {
         if (err) {
+            console.log(err)
             res.status(500).send(err)
         } else {
-            res.status(200).send({message: message})
+            console.log("ok")
+            res.status(200).send(data)
         }
     })
  })
