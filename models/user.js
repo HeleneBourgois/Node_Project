@@ -22,7 +22,7 @@ let UserSchema = new Schema ({
 UserSchema.pre('save', function(next) {
     console.log( this._id + ' is going to be updated/saved, pre middleware')
     console.log(this.modifiedPaths())
-    //modifiedPaths affiche les clefs modifies
+   
     next()
 })
 
@@ -32,8 +32,6 @@ UserSchema.pre('remove', function(next) {
     next()
 })
 
-//attention reprendre laction utilisee dans les controllers donc ci-dessus comme pas de update
-//dans controller mais save, reprendre le save ici
 
 UserSchema.post('save', function(doc) {
    console.log(doc._id + 'has been updated/saved')
@@ -60,7 +58,6 @@ UserSchema.post('remove', function(doc) {
     })
 
 })
-//the schema is useless so far , we need to create a model using it
 
 let User = mongoose.model('User', UserSchema)
 
