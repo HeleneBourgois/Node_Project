@@ -9,7 +9,11 @@ app.use(bodyParser.json())
  userRouter.use(function(req, res, next) {
      next()
  })
+// app.use('/', routes)
 
+// usersRouter.get('/', (req, res, next) => {
+//     res.send(users)
+// })
 
 userRouter.get('/user/:id', (req, res) => {
     controller.find(req.params.id, (err, user) => {
@@ -25,12 +29,15 @@ userRouter.get('/user/:id', (req, res) => {
 })
 
 userRouter.post('/user', (req, res) => {
-    controller.create(req.query, (err, message) => {
-         // console.log(req.query)
+    console.log(req.params)
+    console.log('user created')
+    console.log(req.body)
+    controller.create(req.body, (err, message) => {
         if (err) {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
+            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
@@ -58,6 +65,10 @@ userRouter.delete('/user/:id', (req, res) => {
 })
 
 userRouter.get('/login', (req, res) => {
+    // console.log('admin login')
+    // console.log(req.query)
+    // console.log(req.body)
+    // console.log(req.params)
     controller.login(req.query, (err, data) => {
         if (err) {
             console.log(err)
@@ -65,6 +76,7 @@ userRouter.get('/login', (req, res) => {
         } else {
             console.log("ok")
             res.status(200).send(data)
+            // console.log(data)
         }
     })
  })

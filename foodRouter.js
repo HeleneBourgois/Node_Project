@@ -4,6 +4,8 @@ const controller = require('./controllers/food')
 const bodyParser = require('body-parser')
 
 
+
+
 let foodRouter = express.Router()
 app.use(bodyParser.json())
 foodRouter.use(function(req, res, next) {
@@ -28,18 +30,23 @@ foodRouter.use(function(req, res, next) {
 foodRouter.get('/food', (req, res) => {
     controller.find(req.query, (err, foods) => {
         // console.log(req.params.id)
+        //req.query correspond a mon fitlre de recherche
+        //query lors du get
+        //body lors du post
         if (err) {
             res.status(500).send(err)
         }
        else {
            res.status(200).send(foods)
+           console.log(foods)
        }
     })
     
 })
 foodRouter.post('/food/:userId', (req, res) => {
-    controller.create(req.params.userId, req.query, (err, message) => {
-         // console.log(req.query)
+    controller.create(req.params.userId, req.body, (err, message) => {
+        //  console.log(req.body)
+        //  console.log(req.params)
         if (err) {
             res.status(500).send(err)
         } else {

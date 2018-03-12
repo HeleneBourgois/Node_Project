@@ -6,9 +6,11 @@ let Schema = mongoose.Schema
 
 let FoodSchema = new Schema ({
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
+    _recipe: { type: Schema.Types.ObjectId, ref: 'Recipe' },
     color: String,
     name: { type: String},
-    quantity: Number
+    quantity: Number,
+    createdAt: Date
 })
 FoodSchema.pre('save', function(next) {
     console.log(this + 'pre middleware talking')
@@ -30,6 +32,7 @@ FoodSchema.post('remove', function(doc) {
 //the schema is useless so far , we need to create a model using it
 
 let Food = mongoose.model('Food', FoodSchema)
+//ci dessus avec somemodel = je definis ma colection
 
 //make this available to our users in our Node applications
 module.exports = Food
