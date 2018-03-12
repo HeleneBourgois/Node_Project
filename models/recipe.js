@@ -8,7 +8,8 @@ let Schema = mongoose.Schema
 let RecipeSchema = new Schema ({
     _user: { type: Schema.Types.ObjectId, ref: 'User' },
     _foods: [{ type: Schema.Types.ObjectId, ref: 'Food' }],
-    name: { type: String}
+    name: { type: String},
+    createdAt: Date
 })
 
 RecipeSchema.pre('save', function(next) {

@@ -12,25 +12,37 @@ recipeRouter.use(function(req, res, next) {
  })
 
 
+// recipeRouter.get('/', (req, res) => {
+//     controller.find(req.query, (err, recipes) => {
+//         if (err) {
+//             res.status(500).send(err)
+//         } else {
+//             res.status(200).send(recipes)
+//         }
+//     })
+// })
 
 recipeRouter.get('/recipes', (req, res) => {
     controller.find(req.query, (err, recipes) => {
-        // console.log(req.params.id)
+        console.log(req.query)
         if (err) {
             res.status(500).send(err)
         } else {
            res.status(200).send(recipes)
+        //    console.log(recipes)
        }
     })
     
 })
 recipeRouter.post('/recipe/:userId', (req, res) => {
-    controller.create(req.params.userId, req.query, (err, message) => {
-         // console.log(req.query)
+    controller.create(req.params.userId, req.body, (err, message) => {
+         console.log(req.body)
+        //  console.log(req.params)
         if (err) {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
+            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })

@@ -13,7 +13,9 @@ let UserSchema = new Schema ({
     username: { type: String, required: true, unique: true},
     dateOfBirth: Date,
     password: { type: String, required: true},
-    age: Number
+    age: Number,
+    createdAt: Date
+
 
 })
 
@@ -29,6 +31,9 @@ UserSchema.pre('remove', function(next) {
     console.log(this._id + ' is going to be removed.Pre middleware remove talking')
     next()
 })
+
+//attention reprendre laction utilisee dans les controllers donc ci-dessus comme pas de update
+//dans controller mais save, reprendre le save ici
 
 UserSchema.post('save', function(doc) {
    console.log(doc._id + 'has been updated/saved')
