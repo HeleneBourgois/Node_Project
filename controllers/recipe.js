@@ -1,21 +1,22 @@
-
 const Recipe = require('./../models/recipe')
 const moment = require('moment')
-const bcrypt = require('bcrypt')
 
 exports.create = (userId, recipe, callback) => { 
     console.log(recipe)
     recipe._user = userId
     let newRecipe = new Recipe(recipe)
-    newRecipe.createdAt = moment()
+    newRecipe._createdAt = moment()
     newRecipe.save((err) => {
         callback(err, 'new recipe saved')
     
     })  
 }
 
-exports.find = (filter, callback) => {
-    
+exports.find = (object, callback) => {
+    object.filter = JSON.parse(object.filter)
+    object.sort = JSON.parse(object.sort)
+    let filter = object.filter
+    let sort = object.sort
     Recipe
     .find(filter)
     .populate([
@@ -24,18 +25,17 @@ exports.find = (filter, callback) => {
             select: 'username'
         }
     ])
-    .sort({ name: 'asc'})
+    .sort(sort)
     .exec((err, foods) => {
         callback(err, foods)
     })
 }
+
  
 exports.update = (recipeId, newFields, callback)  => {
     Recipe.findOne({ _id: recipeId}, (err, recipe) => {
-        // console.log(user)
         recipe.set(newFields)
         recipe.save((err) => {
-            // console.log(user) 
            console.log('Recipe successfully updated !')
            callback(err)
        })
