@@ -5,16 +5,56 @@
 // _user et _users objet ou tableaux
 
 
+export const test = () => {
+    console.log('test route')
+    let array = [
+        {
+            nom: 'bgs'
+        },
+        {
+            age: 13
+        }
+    ]
+
+    let array2 = [
+        {
+            nom: 'bourgois'
+        },
+        {
+            age: 8
+        }
+    ]
+
+    let array3 = [...array, ...array2]
+    console.log(array3)
+
+    let obj1 = {
+        age: 9
+    }
+
+    let obj2 = {...obj1}
+     obj1.age = 112
+     console.log(obj1)
+     console.log(obj2)
+
+
+    // let franc = 5
+
+    // let obj = {
+    //     franc
+    // }
+}
+
 
 
 //si return dans un if signifie que le script sarrete donc en dessousje peux ajouter un autre if .
 
 
-if ( true ) {
-    console.log("1")
-} else{
-    console.log( "2")
-}
+// if ( true ) {
+//     console.log("1")
+// } else{
+//     console.log( "2")
+// }
     
 // let response = res 
 // ici dessus response et res sont liés donc si je modifie res, ca modifie response et vice versa
@@ -24,14 +64,14 @@ if ( true ) {
 // au desus je ne transmet que le contenu non lié de res donc si je modifie res ca ne modifie pas repsonse et vice versa.
 //attention cette ecriture nest valable quen ES6 donc ne peux pas lutiiliser pour linstant sur mon back
 
-[
-    {
+// [
+//     {
 
-    },
-    {
+//     },
+//     {
 
-    }
-]
+//     }
+// ]
 
 //ci dessus quand je veux acceder au contenu dun tableau : objet ou pas ( tableau ...) 
 //je peux ecrire ...array ou array[0]
