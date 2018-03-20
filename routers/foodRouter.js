@@ -11,26 +11,8 @@ foodRouter.use(function(req, res, next) {
  })
 
 
-// foodRouter.get('/food/:id', (req, res) => {
-//     controller.find(req.params.id, (err, food) => {
-//         // console.log(req.params.id)
-//         if (err) {
-//             res.status(500).send(err)
-//         }
-//        else {
-//            res.status(200).send(food)
-//        }
-//     })
-    
-// })
-
-
 foodRouter.get('/food', (req, res) => {
     controller.find(req.query, (err, foods) => {
-        // console.log(req.params.id)
-        //req.query correspond a mon fitlre de recherche
-        //query lors du get
-        //body lors du post
         if (err) {
             res.status(500).send(err)
         }
@@ -49,7 +31,6 @@ foodRouter.post('/food/:userId', (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
-            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
