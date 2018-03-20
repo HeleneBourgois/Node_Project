@@ -30,7 +30,6 @@ profilRouter.post('/profil/:userId', (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
-            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
