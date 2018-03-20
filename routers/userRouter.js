@@ -9,15 +9,9 @@ app.use(bodyParser.json())
  userRouter.use(function(req, res, next) {
      next()
  })
-// app.use('/', routes)
-
-// usersRouter.get('/', (req, res, next) => {
-//     res.send(users)
-// })
 
 userRouter.get('/user/:id', (req, res) => {
     controller.find(req.params.id, (err, user) => {
-        //err, user vient de ma callback controller
         console.log(req.params.id)
         if (err) {
             res.status(500).send(err)
@@ -38,7 +32,6 @@ userRouter.post('/user', (req, res) => {
             res.status(500).send(err)
         } else {
             res.status(200).send({message: message})
-            //renvoyer un objet est la maniere clean de faire
         }
     }) 
 })
@@ -66,10 +59,6 @@ userRouter.delete('/user/:id', (req, res) => {
 })
 
 userRouter.get('/login', (req, res) => {
-    // console.log('admin login')
-    // console.log(req.query)
-    // console.log(req.body)
-    // console.log(req.params)
     controller.login(req.query, (err, data) => {
         if (err) {
             console.log(err)
