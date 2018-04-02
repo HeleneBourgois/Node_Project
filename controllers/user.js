@@ -27,12 +27,8 @@ exports.create = (user, callback) => {
 
 exports.find = (userId, callback) => {
     User.findOne({ _id: userId }, (err, user) => {
-        //(err, user = callback de ma methode mongoose)
-        //_id = filtre
-        //,user = resultat
         callback(err, user)
-        //callback = callback de ma methode controller  exports.find qui arrive dans router
-        //err de mongo et resultat de mongo = user
+       
     })
 }
 
