@@ -88,7 +88,6 @@ exports.login = (userLogin, callback) => {
                     id: user.id
                 }
                 callback(null, response)
-                //je dois mettre null car dans router  le premier argument est err.
             } else {
             // console.log('wrong password')
                 let response = {
