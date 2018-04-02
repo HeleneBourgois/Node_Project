@@ -15,8 +15,8 @@ exports.create = (user, callback) => {
         user.password = hash
         console.log(user)
         let newUser = new User(user)
-        newUser.createdAt = moment()
-        newUser.save((err) => {
+        newUser._createdAt = moment()
+        newUser.save((err, user) => {
             callback(err, 'new user created')
 
         })
@@ -27,7 +27,12 @@ exports.create = (user, callback) => {
 
 exports.find = (userId, callback) => {
     User.findOne({ _id: userId }, (err, user) => {
+        //(err, user = callback de ma methode mongoose)
+        //_id = filtre
+        //,user = resultat
         callback(err, user)
+        //callback = callback de ma methode controller  exports.find qui arrive dans router
+        //err de mongo et resultat de mongo = user
     })
 }
 
@@ -87,6 +92,7 @@ exports.login = (userLogin, callback) => {
                     id: user.id
                 }
                 callback(null, response)
+                //je dois mettre null car dans router  le premier argument est err.
             } else {
             // console.log('wrong password')
                 let response = {

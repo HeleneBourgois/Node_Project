@@ -14,7 +14,7 @@ recipeRouter.use(function(req, res, next) {
 
 recipeRouter.get('/recipes', (req, res) => {
     controller.find(req.query, (err, recipes) => {
-        console.log(req.query)
+        // console.log(req.query)
         if (err) {
             res.status(500).send(err)
         } else {
