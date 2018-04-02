@@ -2,10 +2,10 @@ const port = process.env.PORT || 3000
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
-const userRouter = require('./userRouter.js')
-const foodRouter = require('./foodRouter.js')
-const recipeRouter = require('./recipeRouter.js')
-const profilRouter = require('./profilRouter.js')
+import userRouter from './routers/userRouter.js'
+import foodRouter from './routers/foodRouter.js'
+import recipeRouter from './routers/recipeRouter.js'
+import profilRouter from './routers/profilRouter.js'
 import objetTest from './routers/test'
 const cors = require('cors')
 import config from './config.js'

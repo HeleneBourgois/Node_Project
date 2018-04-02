@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose')
 
 //Define a schema
@@ -10,7 +9,7 @@ let FoodSchema = new Schema ({
     color: String,
     name: { type: String},
     quantity: Number,
-    createdAt: Date
+    _createdAt: Date
 })
 FoodSchema.pre('save', function(next) {
     console.log(this + 'pre middleware talking')
